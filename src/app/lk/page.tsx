@@ -60,6 +60,7 @@ const LKPage = () => {
             }
         });
     }, []);
+    console.log(name, surname, gender, age, city, 'lk')
     return (
         <>
             <Header />
