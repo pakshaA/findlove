@@ -21,8 +21,7 @@ export const LoginForm = () => {
         password: '',
         passwordConfirm: ''
     })
-    const [messageApi, contextHolder] = message.useMessage();
-    const [loading, setLoading] = useState(false)
+    const [messageApi, contextHolder] = message.useMessage();   
 
     const router = useRouter()
 
@@ -35,7 +34,6 @@ export const LoginForm = () => {
         }
     
         try {
-            setLoading(true)
             await registerUser(name, email, password)
             router.push('/login')
         } catch (error: any) {
@@ -45,8 +43,6 @@ export const LoginForm = () => {
                 password: 'Ошибка сервера, повторите позже',
                 passwordConfirm: 'Ошибка сервера, повторите позже'
             })
-        } finally {
-            setLoading(false)
         }
     }
 

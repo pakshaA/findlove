@@ -16,7 +16,6 @@ export const LoginForm = () => {
         email: '',
         password: ''
     })
-    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +23,6 @@ export const LoginForm = () => {
         const isValid = validateForm()
         if (isValid) {
             try {
-                setLoading(true)
                 await loginUser(email, password)
                 router.push('/')
             } catch (error) {
@@ -32,8 +30,6 @@ export const LoginForm = () => {
                     email: 'Неверный логин или пароль',
                     password: 'Неверный логин или пароль'
                 })
-            } finally {
-                setLoading(false)
             }
         }
     }
