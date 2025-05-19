@@ -9,13 +9,13 @@ import { getUser } from "@/helpers/api/getUser/getUser";
 
 export const Header = () => {
     const [user, setUser] = useState(null);
-      
+
     useEffect(() => {
         getUser().then(data => {
             if (data) setUser(data);
         });
     }, []);
-    
+    console.log('user', user)
     return (
         <div>
             <div className="container flex flex-row justify-between items-center py-[10px]">
