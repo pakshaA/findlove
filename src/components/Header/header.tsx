@@ -21,7 +21,8 @@ export const Header = () => {
             <div className="container flex flex-row justify-between items-center py-[10px]">
                 <HeartLogo />
                 <HeaderNav />
-                {user ? <Logout /> : <Buttons />}
+                <Logout/> 
+                {/* {user ? <Logout /> : <Buttons />} */}
             </div>
         </div>
     )
