@@ -52,30 +52,32 @@ const LKPage = () => {
         <>
             <Header />
             <div className="pt-[100px]">
-                <div className="container flex flex-row gap-[30px] items-center">
-                    <div>
-                        <Image
-                            src={avatar}
-                            alt="Avatar"
-                            width={300}
-                            height={300}
-                            className="cursor-pointer rounded-full object-cover"
-                            onClick={handleAvatarClick}
-                        />
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleAvatarChange}
-                            ref={fileInputRef}
-                            className="hidden"
-                        />
-                    </div>
-                    <div className="flex flex-col gap-[30px]">
-                        <CustomInput placeholder="Введите имя" defaultValue={name} onChange={(e) => setName(e.target.value)} />
-                        <CustomInput placeholder="Введите фамилию" defaultValue={surname} onChange={(e) => setSurname(e.target.value)} />
-                        <GenderSelect defaultValue={gender} onChange={setGender} />
-                        <NumberSelect defaultValue={age} onChange={setAge} />
-                        <CityPicker defaultValue={city} onChange={setCity} />
+                <div className="container ">
+                    <div className="flex flex-row gap-[30px] items-center">
+                        <div>
+                            <Image
+                                src={avatar}
+                                alt="Avatar"
+                                width={300}
+                                height={300}
+                                className="cursor-pointer rounded-full object-cover"
+                                onClick={handleAvatarClick}
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleAvatarChange}
+                                ref={fileInputRef}
+                                className="hidden"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-[30px]">
+                            <CustomInput placeholder="Введите имя" defaultValue={name} onChange={(e) => setName(e.target.value)} />
+                            <CustomInput placeholder="Введите фамилию" defaultValue={surname} onChange={(e) => setSurname(e.target.value)} />
+                            <GenderSelect defaultValue={gender} onChange={setGender} />
+                            <NumberSelect defaultValue={age} onChange={setAge} />
+                            <CityPicker defaultValue={city} onChange={setCity} />
+                        </div>
                     </div>
                     <CustomButton text="Сохранить" style="primary" link="/lk" onClick={handleSubmit} />
                 </div>
