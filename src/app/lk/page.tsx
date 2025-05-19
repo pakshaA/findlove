@@ -79,7 +79,7 @@ const LKPage = () => {
                             <CityPicker defaultValue={city} onChange={setCity} />
                         </div>
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end mt-[20px]">
                         <CustomButton className="w-[200px]" text="Сохранить" style="primary" link="/lk" onClick={handleSubmit} />
                     </div>
                 </div>
