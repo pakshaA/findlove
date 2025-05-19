@@ -15,7 +15,6 @@ export const Header = () => {
             if (data) setUser(data);
         });
     }, []);
-    console.log('user', user)
     return (
         <div>
             <div className="container flex flex-row justify-between items-center py-[10px]">

@@ -10,13 +10,15 @@ import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "@/components/ui/button/button"
 import { getUser } from "@/helpers/api/getUser/getUser"
 
-const LKPage = () => {
+const LKPage = async () => {
     const [name, setName] = useState<string | null>(null);
     const [surname, setSurname] = useState<string | null>(null);
     const [gender, setGender] = useState<string | null>(null);
     const [age, setAge] = useState<number | null>(null);
     const [city, setCity] = useState<string | null>(null);
     const [avatar, setAvatar] = useState<string>('/defaultAvatar.webp');
+
+    const user = await getUser()
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -49,17 +51,16 @@ const LKPage = () => {
         console.log(changes)
     }
     useEffect(() => {
-        getUser().then(data => {
-            if (data) {
-                setName(data.name);
-                setSurname(data.surname);
-                setGender(data.gender);
-                setAge(data.age);
-                setCity(data.city);
-                // setAvatar(data.avatar);
-            }
-        });
-    }, []);
+        if (user) {
+            console.log(user)
+            setName(user.name);
+            setSurname(user.surname);
+            setGender(user.gender);
+            setAge(user.age);
+            setCity(user.city);
+            // setAvatar(data.avatar);
+        }
+    }, [user]);
     console.log(name, surname, gender, age, city, 'lk')
     return (
         <>
