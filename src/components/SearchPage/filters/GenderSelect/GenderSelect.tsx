@@ -4,10 +4,9 @@ import { Select } from 'antd'
 
 interface SelectProps {
     onChange?: (label: string) => void
-    defaultValue?: string | null
 }
 
-export const GenderSelect = ({onChange, defaultValue}: SelectProps) => {
+export const GenderSelect = ({onChange}: SelectProps) => {
     return (
         <Select 
             showSearch

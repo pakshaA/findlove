@@ -18,15 +18,13 @@ export const Filters = ({
     onChangeAgeFrom,
     onChangeAgeTo,
     onChangeGender,
-    defaultCity = '',
-    defaultGender = ''
 }: FiltersProps) => {
     return (
         <div className="w-full border-[#E92063] border rounded-[20px] p-[20px]">
             <div className="flex flex-row gap-[20px]">
-                <CityPicker onChange={onChangeCity} defaultValue={defaultCity} />
+                <CityPicker onChange={onChangeCity} />
                 <NumberSelect onChangeFrom={onChangeAgeFrom} onChangeTo={onChangeAgeTo} />
-                <GenderSelect onChange={onChangeGender} defaultValue={defaultGender} />
+                <GenderSelect onChange={onChangeGender} />
             </div>
         </div>
     )

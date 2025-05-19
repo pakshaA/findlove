@@ -38,10 +38,10 @@ export const LoginForm = () => {
             router.push('/login')
         } catch (error: any) {
             setError({
-                email: 'Ошибка сервера, повторите позже',
-                name: 'Ошибка сервера, повторите позже',
-                password: 'Ошибка сервера, повторите позже',
-                passwordConfirm: 'Ошибка сервера, повторите позже'
+                email: error.message,
+                name: error.message,
+                password: error.message,
+                passwordConfirm: error.message
             })
         }
     }

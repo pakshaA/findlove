@@ -5,10 +5,9 @@ import cities from '@/helpers/mock/filtered_cities.json'
 
 interface SelectProps {
     onChange?: (label: string) => void
-    defaultValue?: string | null
 }
 
-export const CityPicker = ({onChange, defaultValue}: SelectProps) => {
+export const CityPicker = ({onChange}: SelectProps) => {
     return (
         <ConfigProvider
             theme={{

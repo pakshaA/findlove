@@ -9,9 +9,7 @@ export const loginUser = async (email: string, password: string) => {
     })
 
     const data = await response.json()
-    console.log(data)
     if (response.ok) {
-        console.log(data.user, 'Вход успешен')
         return true
     } else {
         throw new Error(data.message)
