@@ -12,7 +12,7 @@ export const GenderSelect = ({onChange, defaultValue}: SelectProps) => {
         <Select 
             showSearch
             style={{ minWidth: 200 }}
-            placeholder={"Выберите пол"}
+            placeholder="Выберите пол"
             optionFilterProp='name'
             filterSort={(optionA, optionB) =>
                 (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())

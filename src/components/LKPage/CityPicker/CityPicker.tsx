@@ -20,7 +20,7 @@ export const CityPicker = ({onChange, defaultValue}: SelectProps) => {
             <Select 
                 showSearch
                 style={{ minWidth: 200 }}
-                placeholder={"Выберите город"}
+                placeholder="Выберите город"
                 optionFilterProp='label'
                 filterSort={(optionA, optionB) =>
                     (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
