@@ -36,12 +36,12 @@ export const LoginForm = () => {
         try {
             await registerUser(name, email, password)
             router.push('/login')
-        } catch (error: any) {
+        } catch (error) {
             setError({
-                email: error.message,
-                name: error.message,
-                password: error.message,
-                passwordConfirm: error.message
+                email: error as string,
+                name: error as string,
+                password: error as string,
+                passwordConfirm: error as string
             })
         }
     }

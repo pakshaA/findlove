@@ -27,8 +27,8 @@ export const LoginForm = () => {
                 router.push('/')
             } catch (error) {
                 setError({
-                    email: 'Неверный логин или пароль',
-                    password: 'Неверный логин или пароль'
+                    email: `Неверный логин или пароль ${error}`,
+                    password: `Неверный логин или пароль ${error}`
                 })
             }
         }
