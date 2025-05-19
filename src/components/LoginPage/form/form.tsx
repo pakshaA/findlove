@@ -36,22 +36,22 @@ export const LoginForm = () => {
 
     const validateForm = () => {
         let isValid = true
-        let error = {
+        let errorMessage = {
             email: '',
             password: ''
         }
 
         if (!email) {
-            error.email = 'Поле обязательно'
+            errorMessage.email = 'Поле обязательно'
             isValid = false
         }
 
         if (!password) {
-            error.password = 'Поле обязательно'
+            errorMessage.password = 'Поле обязательно'
             isValid = false
         }
 
-        setError(error)
+        setError(errorMessage)
         return isValid
     }
 

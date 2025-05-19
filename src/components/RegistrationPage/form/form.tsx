@@ -32,11 +32,10 @@ export const LoginForm = () => {
             messageApi.error('Пожалуйста, заполните все поля')
             return
         }
-    
         try {
             await registerUser(name, email, password)
             router.push('/login')
-        } catch (error) {
+        } catch (error: any) {
             setError({
                 email: error as string,
                 name: error as string,
