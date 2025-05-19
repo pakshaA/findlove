@@ -15,14 +15,13 @@ export const Header = () => {
             if (data) setUser(data);
         });
     }, []);
-
+    console.log(user)
     return (
         <div>
             <div className="container flex flex-row justify-between items-center py-[10px]">
                 <HeartLogo />
                 <HeaderNav />
-                <Logout/> 
-                {/* {user ? <Logout /> : <Buttons />} */}
+                {user ? <Logout /> : <Buttons />}
             </div>
         </div>
     )

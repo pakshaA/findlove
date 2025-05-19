@@ -45,6 +45,7 @@ const LKPage = () => {
             city,
             avatar,
         }
+        console.log(changes)
     }
 
     return (
@@ -76,7 +77,7 @@ const LKPage = () => {
                         <NumberSelect defaultValue={age} onChange={setAge} />
                         <CityPicker defaultValue={city} onChange={setCity} />
                     </div>
-                    <CustomButton text="Сохранить" style="primary" link="/lk" onClick={() => {}} />
+                    <CustomButton text="Сохранить" style="primary" link="/lk" onClick={handleSubmit} />
                 </div>
             </div>
         </>
