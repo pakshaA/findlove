@@ -22,7 +22,7 @@ export const Logout = ({ user }: { user: user }) => {
             console.log(error)
         }
     }
-    
+    console.log(user)
     return (
         <div className="flex flex-row gap-[20px] items-center">
             <Link href="/lk" className="flex flex-row gap-[10px] items-center">
