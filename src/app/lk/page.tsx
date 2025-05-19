@@ -10,11 +10,11 @@ import { useRef, useState } from "react"
 import { CustomButton } from "@/components/ui/button/button"
 
 const LKPage = () => {
-    const [name, setName] = useState<string>('');
-    const [surname, setSurname] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
+    const [name, setName] = useState<string | null>(null);
+    const [surname, setSurname] = useState<string | null>(null);
+    const [gender, setGender] = useState<string | null>(null);
     const [age, setAge] = useState<number | null>(null);
-    const [city, setCity] = useState<string>('');
+    const [city, setCity] = useState<string | null>(null);
     const [avatar, setAvatar] = useState<string>('/defaultAvatar.webp');
 
     const fileInputRef = useRef<HTMLInputElement>(null);

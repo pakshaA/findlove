@@ -2,7 +2,7 @@ import { Input } from 'antd'
 
 interface CustomInputProps {
     placeholder: string
-    defaultValue?: string
+    defaultValue?: string | null
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -12,7 +12,7 @@ export const CustomInput = ({ placeholder, defaultValue, onChange }: CustomInput
             <Input
                 type="text"
                 placeholder={placeholder}
-                defaultValue={defaultValue}
+                defaultValue={defaultValue ? defaultValue : undefined}
                 onChange={onChange}
                 variant='outlined'
             />
