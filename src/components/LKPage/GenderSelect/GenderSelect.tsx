@@ -4,10 +4,10 @@ import { Select } from 'antd'
 
 interface SelectProps {
     onChange?: (label: string) => void
-    defaultValue: string | null
+    value: string | null
 }
 
-export const GenderSelect = ({onChange, defaultValue}: SelectProps) => {
+export const GenderSelect = ({onChange, value}: SelectProps) => {
     return (
         <Select 
             showSearch
@@ -23,7 +23,7 @@ export const GenderSelect = ({onChange, defaultValue}: SelectProps) => {
             ]}
             allowClear
             onChange={onChange}
-            defaultValue={defaultValue}
+            defaultValue={value}
         />
     )
 }

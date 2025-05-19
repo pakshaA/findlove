@@ -6,11 +6,11 @@ import type { InputNumberProps } from 'antd';
 
 interface NumberSelectProps {
     onChange: (value: number | null) => void;
-    defaultValue: number | null;
+    value: number | null;
 }
 
-export const NumberSelect = ({ onChange, defaultValue }: NumberSelectProps) => {
-    const [from, setFrom] = useState<number | null>(defaultValue || null);
+export const NumberSelect = ({ onChange, value }: NumberSelectProps) => {
+    const [from, setFrom] = useState<number | null>(value || null);
 
     const handleChangeFrom: InputNumberProps['onChange'] = (value) => {
         const num = typeof value === 'number' ? value : null;
