@@ -36,7 +36,7 @@ export const LoginForm = () => {
 
     const validateForm = () => {
         let isValid = true
-        let errorMessage = {
+        const errorMessage = {
             email: '',
             password: ''
         }
