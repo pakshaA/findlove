@@ -6,8 +6,9 @@ import { CityPicker } from "@/components/LKPage/CityPicker/CityPicker"
 import { NumberSelect } from "@/components/LKPage/NumberSelect/NumberSelect"
 import { Header } from "@/components/Header/header"
 import { GenderSelect } from "@/components/LKPage/GenderSelect/GenderSelect"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "@/components/ui/button/button"
+import { getUser } from "@/helpers/api/getUser/getUser"
 
 const LKPage = () => {
     const [name, setName] = useState<string | null>(null);
@@ -43,11 +44,22 @@ const LKPage = () => {
             gender,
             age,
             city,
-            avatar,
+            // avatar,
         }
         console.log(changes)
     }
-
+    useEffect(() => {
+        getUser().then(data => {
+            if (data) {
+                setName(data.name);
+                setSurname(data.surname);
+                setGender(data.gender);
+                setAge(data.age);
+                setCity(data.city);
+                // setAvatar(data.avatar);
+            }
+        });
+    }, []);
     return (
         <>
             <Header />
