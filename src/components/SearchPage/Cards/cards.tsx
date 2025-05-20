@@ -37,14 +37,12 @@ export const Cards = ({ filters }: CardsProps) => {
           photo: user.photo || "/defaultAvatar.webp",
         }))
         const merged = [...mockCards, ...processedUsers]
-        console.log("Загрузка пользователей завершена", merged)
         setCards(merged)
       })
       .catch(() => {
         setCards(mockCards)
       })
       .finally(() => {
-        console.log("Загрузка пользователей завершена", cards)
       })
   }, [])
 
@@ -61,6 +59,7 @@ export const Cards = ({ filters }: CardsProps) => {
 
   useEffect(() => {
     setDisplayedCards(filteredCards)
+    console.log("Отображаемые карточки", displayedCards)
   }, [filteredCards])
 
   useEffect(() => {
