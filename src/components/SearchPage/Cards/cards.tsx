@@ -37,6 +37,7 @@ export const Cards = ({ filters }: CardsProps) => {
           photo: user.photo || "/defaultAvatar.webp",
         }))
         const merged = [...mockCards, ...processedUsers]
+        console.log("Загрузка пользователей завершена", merged)
         setCards(merged)
       })
       .catch(() => {
