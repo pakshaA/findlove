@@ -69,7 +69,13 @@ const LKPage = () => {
                 setAge(data.age ?? null);
                 setCity(data.city ?? "");
             }
-            console.log(data)
+            console.log(data, 'data')
+            console.log(age, 'age')
+            console.log(city, 'city')
+            console.log(gender, 'gender')
+            console.log(name, 'name')
+            console.log(surname, 'surname')
+            
             setIsLoading(false);
         };
 
