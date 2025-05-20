@@ -65,12 +65,12 @@ const LKPage = () => {
             try {
                 const data = await getUser();
                 setUserData({
-                    name: data.name,
+                    name: data.username,
                     surname: data.surname,
                     gender: data.gender,
                     age: data.age,
                     city: data.city,
-                    avatar: data.avatar || '/defaultAvatar.webp'
+                    avatar: '/defaultAvatar.webp'
                 });
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
