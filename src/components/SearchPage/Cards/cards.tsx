@@ -32,7 +32,11 @@ export const Cards = ({ filters }: CardsProps) => {
   useEffect(() => {
     getAllUsers()
       .then((users: User[]) => {
-        const merged = [...mockCards, ...users]
+        const processedUsers = users.map(user => ({
+          ...user,
+          photo: user.photo || "/defaultAvatar.webp",
+        }))
+        const merged = [...mockCards, ...processedUsers]
         setCards(merged)
       })
       .catch(() => {
