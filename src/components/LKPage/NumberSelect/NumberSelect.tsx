@@ -1,23 +1,17 @@
-'use client'
+'use client';
 
-import { InputNumber, ConfigProvider } from "antd";
-import { useState } from "react";
+import { InputNumber, ConfigProvider } from 'antd';
 import type { InputNumberProps } from 'antd';
 
 interface NumberSelectProps {
     onChange: (value: number | undefined) => void;
-    value: string | number | undefined;
+    value: number | undefined;
 }
 
 export const NumberSelect = ({ onChange, value }: NumberSelectProps) => {
-    const [from, setFrom] = useState<number | undefined>(value ? Number(value) : undefined);
-
-    const handleChangeFrom: InputNumberProps['onChange'] = (value) => {
-        const num = typeof value === 'number' ? value : undefined;
-        if (num === undefined || num <= 18) {
-            setFrom(num);
-            onChange(num);
-        }
+    const handleChangeFrom: InputNumberProps['onChange'] = (val) => {
+        const num = typeof val === 'number' ? val : undefined;
+        onChange(num);
     };
 
     return (
@@ -32,11 +26,10 @@ export const NumberSelect = ({ onChange, value }: NumberSelectProps) => {
                 style={{ width: 300 }}
                 min={18}
                 max={100}
-                value={from}
+                value={value}
                 placeholder="Возраст"
                 onChange={handleChangeFrom}
                 changeOnWheel
-                defaultValue={value}
             />
         </ConfigProvider>
     );
