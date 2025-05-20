@@ -1,5 +1,5 @@
 export const getAllUsers = async () => {
-    const res = await fetch("https://server-9n6t.onrender.com/api/users", {
+    const res = await fetch("https://server-9n6t.onrender.com/api/getAll", {
         method: "GET",
         credentials: "include",
     });
