@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { mockCards } from "@/helpers/mock/cards"
 import { X, Heart } from "lucide-react"
+import { getAllUsers } from "@/helpers/api/getCards/getCards"
 
 interface CardsProps {
   filters: {
@@ -14,36 +15,63 @@ interface CardsProps {
   }
 }
 
+interface User {
+  id: number
+  username: string
+  surname: string
+  gender: string
+  age: number
+  city: string
+  photo: string
+}
+
 export const Cards = ({ filters }: CardsProps) => {
-  const [cards, setCards] = useState(mockCards)
+  const [cards, setCards] = useState<User[]>([])
   const [direction, setDirection] = useState<"left" | "right" | null>(null)
 
+  useEffect(() => {
+    getAllUsers()
+      .then((users: User[]) => {
+        const merged = [...mockCards, ...users]
+        setCards(merged)
+      })
+      .catch(() => {
+        setCards(mockCards)
+      })
+  }, [])
+
   const filteredCards = useMemo(() => {
-    return mockCards.filter(card => {
+    return cards.filter(card => {
       const cityMatch = filters.city ? card.city.toLowerCase().includes(filters.city.toLowerCase()) : true
       const ageMatch = card.age >= filters.ageFrom && card.age <= filters.ageTo
-      const genderMatch = filters.gender
-        ? filters.gender.toLowerCase() === card.gender.toLowerCase()
-        : true
+      const genderMatch = filters.gender ? filters.gender.toLowerCase() === card.gender.toLowerCase() : true
       return cityMatch && ageMatch && genderMatch
     })
-  }, [filters])
+  }, [cards, filters])
+
+  const [displayedCards, setDisplayedCards] = useState<User[]>([])
 
   useEffect(() => {
-    setCards(filteredCards)
+    setDisplayedCards(filteredCards)
   }, [filteredCards])
+
+  useEffect(() => {
+    if (displayedCards.length < 3) {
+      setDisplayedCards(prev => [...prev, ...prev])
+    }
+  }, [displayedCards])
 
   const handleAction = (dir: "left" | "right") => {
     setDirection(dir)
     setTimeout(() => {
-      setCards(prev => [...prev.slice(1), prev[0]])
+      setDisplayedCards(prev => [...prev.slice(1), prev[0]])
       setDirection(null)
     }, 500)
   }
 
-  const mainCard = cards[0]
-  const leftCard = cards[1]
-  const rightCard = cards[2]
+  const mainCard = displayedCards[0]
+  const leftCard = displayedCards[1]
+  const rightCard = displayedCards[2]
 
   return (
     <div className="flex flex-col items-center justify-center mt-10 relative w-full h-[500px]">
@@ -57,7 +85,7 @@ export const Cards = ({ filters }: CardsProps) => {
           >
             <img src={rightCard.photo} alt="" className="w-full h-[250px] rounded-t-[20px] object-cover" />
             <div className="p-4 text-center">
-              <p className="font-bold">{rightCard.firstName} {rightCard.lastName}</p>
+              <p className="font-bold">{rightCard.username} {rightCard.surname}</p>
               <p className="text-sm text-gray-500">{rightCard.city} • {rightCard.gender}</p>
             </div>
           </motion.div>
@@ -72,7 +100,7 @@ export const Cards = ({ filters }: CardsProps) => {
           >
             <img src={leftCard.photo} alt="" className="w-full h-[250px] rounded-t-[20px] object-cover" />
             <div className="p-4 text-center">
-              <p className="font-bold">{leftCard.firstName} {leftCard.lastName}</p>
+              <p className="font-bold">{leftCard.username} {leftCard.surname}</p>
               <p className="text-sm text-gray-500">{leftCard.city} • {leftCard.gender}</p>
             </div>
           </motion.div>
@@ -90,7 +118,7 @@ export const Cards = ({ filters }: CardsProps) => {
             >
               <img src={mainCard.photo} alt="" className="w-full h-[250px] rounded-t-[20px] object-cover" />
               <div className="p-4 text-center">
-                <p className="font-bold text-[20px]">{mainCard.firstName} {mainCard.lastName}</p>
+                <p className="font-bold text-[20px]">{mainCard.username} {mainCard.surname}</p>
                 <p className="text-sm text-gray-500">{mainCard.city} • {mainCard.gender}</p>
                 <p className="text-sm text-gray-500">{mainCard.age} лет</p>
               </div>
