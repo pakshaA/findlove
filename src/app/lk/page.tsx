@@ -9,6 +9,7 @@ import { Header } from "@/components/Header/header";
 import { GenderSelect } from "@/components/LKPage/GenderSelect/GenderSelect";
 import { CustomButton } from "@/components/ui/button/button";
 import { getUser } from "@/helpers/api/getUser/getUser";
+import { updateUser } from "@/helpers/api/updateUser/update";
 
 interface User {
     name: string;
@@ -57,7 +58,12 @@ const LKPage = () => {
             city: userData.city,
             avatar: userData.avatar,
         };
-        console.log("Данные для сохранения:", changes);
+
+        updateUser(changes).then(() => {
+            console.log("Данные успешно обновлены");
+        }).catch((error) => {
+            console.error("Ошибка обновления данных:", error);
+        });
     };
 
     useEffect(() => {
