@@ -115,6 +115,7 @@ const LKPage = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-[30px]">
+                        <p>{userData.name}</p>
                         <CustomInput
                             placeholder="Введите имя"
                             value={userData.name}
