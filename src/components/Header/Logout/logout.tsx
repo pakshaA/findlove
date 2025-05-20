@@ -17,6 +17,7 @@ export const Logout = ({ user }: { user: user }) => {
         try {
             logoutUser()
             router.push('/')
+            window.location.reload()
         } catch (error) {
             console.log(error)
         }
