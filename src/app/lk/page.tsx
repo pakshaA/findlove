@@ -69,7 +69,7 @@ const LKPage = () => {
                 setAge(data.age ?? null);
                 setCity(data.city ?? "");
             }
-
+            console.log(data)
             setIsLoading(false);
         };
 
