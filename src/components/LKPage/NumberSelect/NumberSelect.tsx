@@ -6,11 +6,11 @@ import type { InputNumberProps } from 'antd';
 
 interface NumberSelectProps {
     onChange: (value: number | null) => void;
-    value: number | null;
+    value: string | number | undefined;
 }
 
 export const NumberSelect = ({ onChange, value }: NumberSelectProps) => {
-    const [from, setFrom] = useState<number | null>(value || null);
+    const [from, setFrom] = useState<number | null>(value ? Number(value) : null);
 
     const handleChangeFrom: InputNumberProps['onChange'] = (value) => {
         const num = typeof value === 'number' ? value : null;
@@ -36,6 +36,7 @@ export const NumberSelect = ({ onChange, value }: NumberSelectProps) => {
                 placeholder="Возраст"
                 onChange={handleChangeFrom}
                 changeOnWheel
+                defaultValue={value}
             />
         </ConfigProvider>
     );

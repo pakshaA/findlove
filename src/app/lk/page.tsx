@@ -122,7 +122,7 @@ const LKPage = () => {
                             />
 
                             <GenderSelect value={gender ?? ""} onChange={setGender} />
-                            <NumberSelect value={age ?? 0} onChange={setAge} />
+                            <NumberSelect value={age ?? ""} onChange={setAge} />
                             <CityPicker value={city ?? ""} onChange={setCity} />
                         </div>
                     </div>

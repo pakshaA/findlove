@@ -24,6 +24,7 @@ export const GenderSelect = ({onChange, value}: SelectProps) => {
             allowClear
             onChange={onChange}
             defaultValue={value}
+            value={value}
         />
     )
 }

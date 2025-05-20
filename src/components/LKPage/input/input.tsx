@@ -15,6 +15,7 @@ export const CustomInput = ({ placeholder, value, onChange }: CustomInputProps) 
                 value={value}
                 onChange={onChange}
                 variant='outlined'
+                defaultValue={value}
             />
         </div>
     )
