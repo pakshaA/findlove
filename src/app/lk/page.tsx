@@ -22,7 +22,7 @@ const LKPage = () => {
     const [name, setName] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
     const [gender, setGender] = useState<string>("");
-    const [age, setAge] = useState<number | null>(null);
+    const [age, setAge] = useState<number | undefined>(undefined);
     const [city, setCity] = useState<string>("");
     const [avatar, setAvatar] = useState<string>("/defaultAvatar.webp");
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -63,11 +63,11 @@ const LKPage = () => {
             const data: User | null = await getUser();
 
             if (data) {
-                setName(data.name ?? "");
-                setSurname(data.surname ?? "");
-                setGender(data.gender ?? "");
-                setAge(data.age ?? null);
-                setCity(data.city ?? "");
+                setName(data.name);
+                setSurname(data.surname);
+                setGender(data.gender);
+                setAge(data.age);
+                setCity(data.city);
             }
             console.log(data, 'data')
             console.log(age, 'age')
@@ -75,7 +75,7 @@ const LKPage = () => {
             console.log(gender, 'gender')
             console.log(name, 'name')
             console.log(surname, 'surname')
-            
+
             setIsLoading(false);
         };
 
@@ -117,19 +117,19 @@ const LKPage = () => {
                         <div className="flex flex-col gap-[30px]">
                         <CustomInput
                             placeholder="Введите имя"
-                            value={name ?? ""}
+                            value={name}
                             onChange={(e) => setName(e.target.value)}
                             />
 
                             <CustomInput
                             placeholder="Введите фамилию"
-                            value={surname ?? ""}
+                            value={surname}
                             onChange={(e) => setSurname(e.target.value)}
                             />
 
-                            <GenderSelect value={gender ?? ""} onChange={setGender} />
-                            <NumberSelect value={age ?? ""} onChange={setAge} />
-                            <CityPicker value={city ?? ""} onChange={setCity} />
+                            <GenderSelect value={gender} onChange={setGender} />
+                            <NumberSelect value={age} onChange={setAge} />
+                            <CityPicker value={city} onChange={setCity} />
                         </div>
                     </div>
                     <div className="flex justify-end mt-[20px]">
