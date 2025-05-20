@@ -9,7 +9,7 @@ interface User {
 
 export const updateUser = async (user: User) => {
     const response = await fetch('https://server-9n6t.onrender.com/api/update', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
