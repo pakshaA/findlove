@@ -42,6 +42,9 @@ export const Cards = ({ filters }: CardsProps) => {
       .catch(() => {
         setCards(mockCards)
       })
+      .finally(() => {
+        console.log("Загрузка пользователей завершена", cards)
+      })
   }, [])
 
   const filteredCards = useMemo(() => {
