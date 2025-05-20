@@ -59,7 +59,6 @@ export const Cards = ({ filters }: CardsProps) => {
 
   useEffect(() => {
     setDisplayedCards(filteredCards)
-    console.log("Отображаемые карточки", displayedCards)
   }, [filteredCards])
 
   useEffect(() => {
@@ -80,6 +79,10 @@ export const Cards = ({ filters }: CardsProps) => {
   const leftCard = displayedCards[1]
   const rightCard = displayedCards[2]
 
+  useEffect(() => {
+    console.log("Отображаемые карточки", displayedCards)
+  }, [displayedCards])
+  
   return (
     <div className="flex flex-col items-center justify-center mt-10 relative w-full h-[500px]">
       <div className="relative w-[300px] h-[400px]">
