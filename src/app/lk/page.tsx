@@ -26,7 +26,7 @@ const LKPage = () => {
     const [city, setCity] = useState<string>("");
     const [avatar, setAvatar] = useState<string>("/defaultAvatar.webp");
     const [isLoading, setIsLoading] = useState<boolean>(true);
-
+    const [user, setUser] = useState<User | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleAvatarClick = () => {
@@ -60,21 +60,9 @@ const LKPage = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const data: User | null = await getUser();
-
-            if (data) {
-                setName(data.name);
-                setSurname(data.surname);
-                setGender(data.gender);
-                setAge(data.age);
-                setCity(data.city);
-            }
-            console.log(data, 'data')
-            console.log(age, 'age')
-            console.log(city, 'city')
-            console.log(gender, 'gender')
-            console.log(name, 'name')
-            console.log(surname, 'surname')
+            getUser().then(data => {
+                setUser(data);
+            });
 
             setIsLoading(false);
         };
@@ -82,6 +70,21 @@ const LKPage = () => {
         fetchUser();
     }, []);
 
+    useEffect(() => {
+        if (user) {
+            setName(user.name);
+            setSurname(user.surname);
+            setGender(user.gender);
+            setAge(user.age);
+            setCity(user.city);
+        }
+    }, [user]);
+    console.log(user, 'user')
+    console.log(name, 'name')
+    console.log(surname, 'surname')
+    console.log(gender, 'gender')
+    console.log(age, 'age')
+    console.log(city, 'city')
     if (isLoading) {
         return (
             <>
